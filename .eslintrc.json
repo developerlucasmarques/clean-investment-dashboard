@@ -17,6 +17,9 @@
       "./tsconfig.json"
     ]
   },
+  "ignorePatterns": [
+    "**.js"
+  ],
   "rules": {
     "@typescript-eslint/strict-boolean-expressions": "off",
     "@stylistic/ts/no-extra-parens": "error",
