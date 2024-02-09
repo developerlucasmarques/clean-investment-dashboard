@@ -4,7 +4,8 @@
   "description": "",
   "main": "main.ts",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/developerlucasmarques/clean-investment-dashboard/issues"
   },
-  "homepage": "https://github.com/developerlucasmarques/clean-investment-dashboard#readme"
+  "homepage": "https://github.com/developerlucasmarques/clean-investment-dashboard#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^18.6.0",
+    "@commitlint/config-conventional": "^18.6.0",
+    "husky": "^9.0.10"
+  }
 }
