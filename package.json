@@ -1,0 +1,19 @@
+{
+  "name": "clean-investment-dashboard",
+  "version": "0.0.1",
+  "description": "",
+  "main": "main.ts",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/developerlucasmarques/clean-investment-dashboard.git"
+  },
+  "author": "Lucas Marques",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/developerlucasmarques/clean-investment-dashboard/issues"
+  },
+  "homepage": "https://github.com/developerlucasmarques/clean-investment-dashboard#readme"
+}
