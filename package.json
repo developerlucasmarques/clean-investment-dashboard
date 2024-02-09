@@ -10,7 +10,8 @@
     "test:unit-verbose": "jest --passWithNoTests --runInBand --watch -c jest-unit-config.js",
     "test:integration-verbose": "jest --passWithNoTests --runInBand --watch -c jest-integration-config.js",
     "test:ci": "npm test -- --coverage",
-    "prepare": "husky"
+    "prepare": "husky",
+    "lint": "eslint ./src/** --cache --fix"
   },
   "repository": {
     "type": "git",
