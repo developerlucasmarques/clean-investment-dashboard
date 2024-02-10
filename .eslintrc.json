@@ -24,6 +24,7 @@
     "@typescript-eslint/strict-boolean-expressions": "off",
     "@typescript-eslint/consistent-type-definitions": "off",
     "@typescript-eslint/non-nullable-type-assertion-style": "off",
+    "@typescript-eslint/no-invalid-void-type": "off",
     "@stylistic/ts/no-extra-parens": "error",
     "@stylistic/ts/padding-line-between-statements": [
       "error",
@@ -34,7 +35,7 @@
     "max-len": [
       "error", 
       {
-        "code": 100, 
+        "code": 120, 
         "ignoreComments": true,
         "ignoreTrailingComments": true,
         "ignoreRegExpLiterals": true,
