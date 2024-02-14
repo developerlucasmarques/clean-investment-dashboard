@@ -28,6 +28,7 @@ export const bad = <const E extends CoreError, const H> (error: E): Bad<E, H> =>
 }
 
 export function hit<const E extends CoreError, const H extends void> (result?: H): Hit<E, H>
+export function hit<const E extends CoreError, const H> (result: H): Hit<E, H>
 export function hit<const E extends CoreError, const H> (result: H): Hit<E, H> {
   return new Hit<E, H>(result)
 }
