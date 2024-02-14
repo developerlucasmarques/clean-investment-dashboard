@@ -1,4 +1,4 @@
-type ValueObjectProps = Record<string, any>
+type ValueObjectProps = Record<string, string | number>
 
 export abstract class ValueObject<T extends ValueObjectProps> {
   protected constructor (private readonly props: T) {}
