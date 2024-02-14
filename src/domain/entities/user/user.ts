@@ -1,7 +1,8 @@
 import { Entity, type UniqueEntityID } from '@/shared/domain'
+import type { UserName } from './value-objects'
 
 type UserProps = {
-  name: string
+  name: UserName
   email: string
   password: string
 }
@@ -11,7 +12,7 @@ export class User extends Entity<UserProps> {
     super(props, id)
   }
 
-  public get name (): string {
+  public get name (): UserName {
     return this.getProp('name')
   }
 
