@@ -4,7 +4,6 @@ import type { UserEmail, UserName } from './value-objects'
 type UserProps = {
   name: UserName
   email: UserEmail
-  password: string
 }
 
 export class User extends Entity<UserProps> {
@@ -18,9 +17,5 @@ export class User extends Entity<UserProps> {
 
   public get email (): UserEmail {
     return this.getProp('email')
-  }
-
-  public get password (): string {
-    return this.getProp('password')
   }
 }
