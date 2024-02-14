@@ -1,4 +1,4 @@
-import { type CoreError } from './error'
+import { type CoreError } from './core-error'
 
 export type Result<E extends CoreError, H> = Bad<E, H> | Hit<E, H>
 
