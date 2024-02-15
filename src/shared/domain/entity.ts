@@ -1,18 +1,11 @@
-import { UniqueEntityID } from './unique-entity-id'
+import { type UniqueEntityID } from './unique-entity-id'
 
-export abstract class Entity<T> {
+export abstract class Entity<T extends { id?: UniqueEntityID }> {
   public constructor (
-    private readonly props: T,
-    private readonly id?: UniqueEntityID
-  ) {
-    this.id = id ?? new UniqueEntityID()
-  }
+    private readonly props: T
+  ) {}
 
   public getProp<K extends keyof T>(key: K): T[K] {
     return this.props[key]
-  }
-
-  public getId (): UniqueEntityID {
-    return this.id as UniqueEntityID
   }
 }

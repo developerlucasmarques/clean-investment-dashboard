@@ -4,4 +4,8 @@ export class UniqueEntityID {
       this.id = crypto.randomUUID()
     }
   }
+
+  public get value (): string {
+    return this.id as string
+  }
 }
