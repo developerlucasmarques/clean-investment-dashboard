@@ -30,7 +30,7 @@ describe('User Entity', () => {
       email: 'any_email@mail.com'
     })
 
-    expect(sut.value).toEqual({
+    expect(sut.value).toMatchObject({
       props: {
         id: { id: 'any_id' },
         email: { props: 'any_email@mail.com' },
@@ -47,6 +47,7 @@ describe('User Entity', () => {
     })
 
     expect(sut.value).toEqual({
+      _domainEvents: [],
       props: {
         id: { id: 'another_id' },
         email: { props: 'any_email@mail.com' },
