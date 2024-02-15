@@ -1,13 +1,9 @@
-import type { CoreError, Result } from '../core'
-
-type ValueObjectProps = Record<string, string | number>
-
-export abstract class ValueObject<T extends ValueObjectProps> {
-  protected constructor (private readonly props: T) {}
-
-  public getProp<K extends keyof T>(key: K): T[K] {
-    return this.props[key]
+export abstract class ValueObject<T extends string | number> {
+  protected constructor (private readonly props: T) {
+    Object.freeze(this)
   }
 
-  public abstract create (props: T): Result<CoreError, ValueObject<T>>
+  public getProp (): T {
+    return this.props
+  }
 }
