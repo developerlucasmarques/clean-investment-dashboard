@@ -10,5 +10,6 @@ export abstract class CoreError {
   protected constructor (props: PropsCoreError) {
     this.message = props.message
     this.name = props.name
+    Object.freeze(this)
   }
 }

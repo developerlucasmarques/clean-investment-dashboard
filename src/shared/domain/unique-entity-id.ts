@@ -3,6 +3,7 @@ export class UniqueEntityID {
     if (!id) {
       this.id = crypto.randomUUID()
     }
+    Object.freeze(this)
   }
 
   public get value (): string {
