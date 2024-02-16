@@ -51,6 +51,21 @@
         "properties": "explicit",
         "parameterProperties": "explicit"
       }
-    }]
+    }],
+    "@typescript-eslint/lines-between-class-members": [
+      "error",
+      {
+        "enforce": [
+          { "blankLine": "never", "prev": "field", "next": "field" },
+          { "blankLine": "always", "prev": "field", "next": "method" },
+          { "blankLine": "always", "prev": "method", "next": "field" },
+          { "blankLine": "always", "prev": "method", "next": "method" }
+        ]
+      }
+    ],
+    "@typescript-eslint/member-ordering": [
+      "error",
+      { "default": ["signature","field","constructor","method"] }
+    ]
   }
 }
