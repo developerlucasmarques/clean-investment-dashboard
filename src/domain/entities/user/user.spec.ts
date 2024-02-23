@@ -1,58 +1,60 @@
-import { hit } from '@/shared/core'
+import { UserCreatedDomainEvent } from './events'
 import { User } from './user'
+import { type DataCreateUser } from './user-types'
+import MockDate from 'mockdate'
 
-jest.mock('@/shared/domain/unique-entity-id', () => ({
-  UniqueEntityID: jest.fn().mockImplementation((id?: string) => ({
-    id: id ?? 'any_id'
-  }))
+jest.mock('crypto', () => ({
+  randomUUID: jest.fn().mockReturnValue('any_mock_id')
 }))
 
-jest.mock('@/domain/entities/user/value-objects/user-name', () => ({
-  UserName: {
-    create: jest.fn(() => {
-      return hit({ props: 'any_name' })
-    })
-  }
-}))
+const makeFakeDataCreateUser = (): DataCreateUser => ({
+  email: 'any_email@mail.com',
+  name: 'any_name'
+})
 
-jest.mock('@/domain/entities/user/value-objects/user-email', () => ({
-  UserEmail: {
-    create: jest.fn(() => {
-      return hit({ props: 'any_email@mail.com' })
-    })
-  }
-}))
+const makeSut = (id?: { id: string }): User => {
+  return User.create({
+    ...id && { ...id },
+    ...makeFakeDataCreateUser()
+  }).value as User
+}
 
 describe('User Entity', () => {
-  it('Should return an User on success', async () => {
-    const sut = User.create({
-      name: 'any_name',
-      email: 'any_email@mail.com'
-    })
+  beforeAll(() => { MockDate.set(new Date()) })
 
-    expect(sut.value).toMatchObject({
-      props: {
-        id: { id: 'any_id' },
-        email: { props: 'any_email@mail.com' },
-        name: { props: 'any_name' }
-      }
-    })
+  afterAll(() => { MockDate.reset() })
+
+  it('Should return an User on success', () => {
+    const sut = makeSut()
+
+    expect(sut.id.value).toBe('any_mock_id')
+    expect(sut.email.value).toEqual({ email: 'any_email@mail.com' })
+    expect(sut.name.value).toEqual({ name: 'any_name' })
   })
 
-  it('Should return an User the same id informed', async () => {
-    const sut = User.create({
-      id: 'another_id',
-      name: 'any_name',
-      email: 'any_email@mail.com'
-    })
+  it('Should return an User with the same id informed', () => {
+    const sut = makeSut({ id: 'another_id' })
 
-    expect(sut.value).toEqual({
-      _domainEvents: [],
-      props: {
-        id: { id: 'another_id' },
-        email: { props: 'any_email@mail.com' },
-        name: { props: 'any_name' }
-      }
-    })
+    expect(sut.id.value).toBe('another_id')
+    expect(sut.email.value).toEqual({ email: 'any_email@mail.com' })
+    expect(sut.name.value).toEqual({ name: 'any_name' })
+  })
+
+  it('Should add to domainEvents a UserCreatedDomainEvent if is new User', () => {
+    const sut = makeSut()
+    const domainEvents = sut.domainEvents
+
+    expect(domainEvents.length).toBe(1)
+    expect(domainEvents[0]).toBeInstanceOf(UserCreatedDomainEvent)
+    expect(domainEvents[0].name).toBe('UserCreatedDomainEvent')
+    expect(domainEvents[0].occurredOn).toEqual(new Date())
+    expect(domainEvents[0].payload.id).toEqual({ id: 'any_mock_id' })
+  })
+
+  it('Should not add to domainEvents a UserCreatedDomainEvent if already exists the same User', () => {
+    const sut = makeSut({ id: 'user_id' })
+    const domainEvents = sut.domainEvents
+
+    expect(domainEvents.length).toBe(0)
   })
 })
