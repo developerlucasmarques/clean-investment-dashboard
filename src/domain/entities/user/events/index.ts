@@ -1,1 +1,1 @@
-export * from './user-created'
+export * from './user-created.domain.event'

@@ -1,4 +1,4 @@
-import { CoreError } from '@/shared/core'
+import { CoreError } from '@/shared/util'
 
 export class UserNameError extends CoreError {
   public constructor (userName: string) {

@@ -1,10 +1,10 @@
-import { bad, hit, type Result } from '@/shared/core'
+import { bad, hit, type Result } from '@/shared/util'
 import { ValueObject } from '@/shared/domain'
 import { UserEmailError } from './errors'
 
-export class UserEmail extends ValueObject<string> {
+export class UserEmail extends ValueObject<{ email: string }> {
   private constructor (email: string) {
-    super(email)
+    super({ email })
   }
 
   public static create (email: string): Result<UserEmailError, UserEmail> {
