@@ -1,4 +1,4 @@
-import { type IUseCase } from '@/shared/core/i-usecase'
+import { type IUseCase } from '@/shared/core/usecase'
 import { type Result } from '@/shared/core'
 import { type EmailInUseError } from './errors/create-user-errors'
 import type { CreateUserEntityErrors, DataCreateUser } from '../../entity/user-types'
