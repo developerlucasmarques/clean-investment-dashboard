@@ -1,11 +1,11 @@
 import { bad, hit, type Result } from '@/shared/util'
-import { AgregateRoot, UniqueEntityID } from '@/shared/domain'
+import { AggregateRoot, UniqueEntityID } from '@/shared/domain'
 import { UserCreatedDomainEvent } from './events'
 import type { DataCreateUser, UserProps } from './user-types'
 import { UserEmail, UserName } from './value-objects'
 import type { UserEmailError, UserNameError } from './value-objects/errors'
 
-export class User extends AgregateRoot<UserProps> {
+export class User extends AggregateRoot<UserProps> {
   private constructor (props: UserProps) {
     super(props)
     Object.freeze(this)
