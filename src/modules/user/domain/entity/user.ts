@@ -1,9 +1,8 @@
-import { bad, hit, type Result } from '@/shared/util'
 import { AggregateRoot, UniqueEntityID } from '@/shared/domain'
+import { bad, hit, type Result } from '@/shared/core'
 import { UserCreatedDomainEvent } from './events'
-import type { DataCreateUser, UserProps } from './user-types'
+import type { CreateUserEntityErrors, DataCreateUser, UserProps } from './user-types'
 import { UserEmail, UserName } from './value-objects'
-import type { UserEmailError, UserNameError } from './value-objects/errors'
 
 export class User extends AggregateRoot<UserProps> {
   private constructor (props: UserProps) {
@@ -23,7 +22,7 @@ export class User extends AggregateRoot<UserProps> {
     return this.props.email
   }
 
-  public static create (data: DataCreateUser): Result<UserEmailError | UserNameError, User> {
+  public static create (data: DataCreateUser): Result<CreateUserEntityErrors, User> {
     const { email, name } = data
     const nameOrError = UserName.create(name)
     const emailOrError = UserEmail.create(email)

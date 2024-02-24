@@ -1,6 +1,6 @@
-import { bad, hit, type Result } from '@/shared/util'
+import { bad, hit, type Result } from '@/shared/core'
 import { ValueObject } from '@/shared/domain'
-import { UserEmailError } from './errors'
+import { UserEmailError } from './errors/value-objects-erros'
 
 export class UserEmail extends ValueObject<{ email: string }> {
   private constructor (email: string) {
