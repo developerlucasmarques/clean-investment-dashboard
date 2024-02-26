@@ -41,5 +41,9 @@
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@mikro-orm/core": "^6.1.5",
+    "@mikro-orm/postgresql": "^6.1.5"
   }
 }
