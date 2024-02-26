@@ -1,13 +1,13 @@
 import { bad, hit } from 'shared/core'
-import type { CreateUserIn, CreateUserOut, ICreateUser } from '../domain/contracts/usecases/create-user'
+import type { CreateUserIn, CreateUserOut, ICreateUser } from '../domain/usecases/create-user'
 import { User } from '../domain/entity/user'
-import { type AddUserRepository } from '../domain/contracts/repositories/user-repository'
-import { type Encrypter } from '../domain/contracts/cryptography/encryper'
+import { type IAddUserRepository } from '../domain/repository/user-repository'
+import { type IEncrypter } from '../domain/cryptography/encryper'
 
 export class CreateUserUseCase implements ICreateUser {
   public constructor (
-    private readonly addUserRepository: AddUserRepository,
-    private readonly encrypter: Encrypter
+    private readonly addUserRepository: IAddUserRepository,
+    private readonly encrypter: IEncrypter
   ) {}
 
   public async execute (input: CreateUserIn): Promise<CreateUserOut> {

@@ -1,5 +1,5 @@
 import { type AccessToken } from './access-token'
 
-export interface Encrypter {
+export interface IEncrypter {
   encrypt: (value: string) => AccessToken
 }
