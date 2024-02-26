@@ -1,5 +1,5 @@
-import { bad, hit, type Result } from '@/shared/core'
-import { ValueObject } from '@/shared/domain'
+import { bad, hit, type Result } from 'shared/core'
+import { ValueObject } from 'shared/domain'
 import { UserNameError } from './errors/value-objects-erros'
 
 export class UserName extends ValueObject<{ name: string }> {
