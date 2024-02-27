@@ -10,19 +10,19 @@ export class User extends AggregateRoot<UserProps> {
     Object.freeze(this)
   }
 
-   get id (): UniqueEntityID {
+  get id (): UniqueEntityID {
     return this.props.id
   }
 
-   get name (): UserName {
+  get name (): UserName {
     return this.props.name
   }
 
-   get email (): UserEmail {
+  get email (): UserEmail {
     return this.props.email
   }
 
-   static create (data: DataCreateUser): Either<CreateUserEntityErrors, User> {
+  static create (data: DataCreateUser): Either<CreateUserEntityErrors, User> {
     const { email, name } = data
     const nameOrError = UserName.create(name)
     const emailOrError = UserEmail.create(email)

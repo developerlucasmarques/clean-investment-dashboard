@@ -14,7 +14,7 @@
     "test:integration-verbose": "jest --passWithNoTests --runInBand --watch -c jest-integration-config.js",
     "test:ci": "npm test -- --coverage",
     "prepare": "husky",
-    "create-schema": "ts-node ./src/main/mikro-orm/create-schema",
+    "create:schema": "ts-node ./src/main/mikro-orm/create-schema",
     "lint": "eslint ./src/** --cache --fix"
   },
   "repository": {

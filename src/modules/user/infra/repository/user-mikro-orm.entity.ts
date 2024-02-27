@@ -5,7 +5,7 @@ export class UserEntity {
   @PrimaryKey()
     id: string
   @Property()
-    userName: string
+    name: string
   @Property({
     unique: true
   })
@@ -17,7 +17,7 @@ export class UserEntity {
     email: string
   ) {
     this.id = id
-    this.userName = name
+    this.name = name
     this.email = email
   }
 }

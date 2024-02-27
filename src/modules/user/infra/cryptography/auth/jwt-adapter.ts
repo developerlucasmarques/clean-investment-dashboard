@@ -4,7 +4,7 @@ import { type AccessToken } from 'modules/user/domain/cryptography/access-token'
 import { type IEncrypter } from 'modules/user/domain/cryptography/encryper'
 
 @Injectable()
-export class AuthService implements IEncrypter {
+export class JwtAdapter implements IEncrypter {
   constructor (private readonly jwtService: JwtService) {}
 
   encrypt (value: string): AccessToken {

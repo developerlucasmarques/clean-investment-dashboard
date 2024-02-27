@@ -1,8 +1,8 @@
 import { type UniqueEntityID } from '../unique-entity-id'
 
 export abstract class DomainEvent<T extends { id: UniqueEntityID }> {
-   readonly name: string
-   readonly occurredOn: Date
+  readonly name: string
+  readonly occurredOn: Date
   private readonly _payload: T
 
   protected constructor (payload: T) {
@@ -13,7 +13,7 @@ export abstract class DomainEvent<T extends { id: UniqueEntityID }> {
     this._payload = payload
   }
 
-   get payload (): T {
+  get payload (): T {
     return this._payload
   }
 }

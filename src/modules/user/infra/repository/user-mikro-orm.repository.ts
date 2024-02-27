@@ -2,9 +2,9 @@ import { EntityManager } from '@mikro-orm/postgresql'
 import { Injectable } from '@nestjs/common'
 import { type User } from 'modules/user/domain/entity/user'
 import { type IUserRepository } from 'modules/user/domain/repository/user-repository'
-import { UserEntity } from './user-entity'
+import { UserEntity } from './user-mikro-orm.entity'
 @Injectable()
-export class UserRepository implements IUserRepository {
+export class UserMikroOrmRepository implements IUserRepository {
   constructor (private readonly entityManager: EntityManager) {}
 
   async add (user: User): Promise<void> {
@@ -16,6 +16,5 @@ export class UserRepository implements IUserRepository {
 
     this.entityManager.persist(userEntity)
     await this.entityManager.flush()
-    console.log('USERRR')
   }
 }

@@ -1,5 +1,5 @@
 import { BadRequestException, Body, Controller, Post } from '@nestjs/common'
-import { CreateUserUseCase } from '../usecases/create-user-usecase'
+import { CreateUserUseCase } from '../usecases/create-user.usecase'
 import { CreateUserDto } from './dtos/create-use.dto'
 
 @Controller('/user')

@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common'
 import { JwtModule } from '@nestjs/jwt'
 import env from 'main/configs/env'
-import { AuthService } from './auth.service'
+import { JwtAdapter } from './jwt-adapter'
 
 @Module({
   imports: [
@@ -11,6 +11,6 @@ import { AuthService } from './auth.service'
       signOptions: { expiresIn: '60s' }
     })
   ],
-  providers: [AuthService]
+  providers: [JwtAdapter]
 })
 export class AuthModule {}

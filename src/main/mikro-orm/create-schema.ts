@@ -1,5 +1,5 @@
 import { MikroORM } from '@mikro-orm/core'
-import { UserEntity } from '../../modules/user/infra/repository/user-entity'
+import { UserEntity } from '../../modules/user/infra/repository/user-mikro-orm.entity'
 import { PostgreSqlDriver } from '@mikro-orm/postgresql';
 
 (async () => {
