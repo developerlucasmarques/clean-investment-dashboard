@@ -13,4 +13,4 @@ import { JwtAdapter } from './jwt-adapter'
   ],
   providers: [JwtAdapter]
 })
-export class AuthModule {}
+export class JwtAdapterModule {}
