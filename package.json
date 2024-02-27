@@ -14,6 +14,7 @@
     "test:integration-verbose": "jest --passWithNoTests --runInBand --watch -c jest-integration-config.js",
     "test:ci": "npm test -- --coverage",
     "prepare": "husky",
+    "create-schema": "ts-node ./src/main/mikro-orm/create-schema",
     "lint": "eslint ./src/** --cache --fix"
   },
   "repository": {
@@ -62,6 +63,7 @@
     "@nestjs/core": "^10.0.0",
     "@nestjs/jwt": "^10.2.0",
     "@nestjs/platform-express": "^10.0.0",
+    "dotenv": "^16.4.5",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1"
   }

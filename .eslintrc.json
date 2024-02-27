@@ -43,15 +43,6 @@
         "ignoreTemplateLiterals": true
       }
     ],
-    "@typescript-eslint/explicit-member-accessibility": ["error", {
-      "accessibility": "explicit",
-      "overrides": {
-        "constructors": "explicit",
-        "methods": "explicit",
-        "properties": "explicit",
-        "parameterProperties": "explicit"
-      }
-    }],
     "@typescript-eslint/lines-between-class-members": [
       "error",
       {

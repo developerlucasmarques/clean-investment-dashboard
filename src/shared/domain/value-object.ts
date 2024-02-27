@@ -3,7 +3,7 @@ export abstract class ValueObject<T extends Record<string, any>> {
     Object.freeze(this)
   }
 
-  public get value (): T {
+  get value (): T {
     return this.props
   }
 }

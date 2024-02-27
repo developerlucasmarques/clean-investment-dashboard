@@ -1,21 +1,23 @@
 import { Entity, PrimaryKey, Property } from '@mikro-orm/core'
 
-@Entity()
+@Entity({ tableName: 'user' })
 export class UserEntity {
   @PrimaryKey()
-  public id: string
+    id: string
   @Property()
-  public name: string
-  @Property()
-  public email: string
+    userName: string
+  @Property({
+    unique: true
+  })
+    email: string
 
-  public constructor (
+  constructor (
     id: string,
     name: string,
     email: string
   ) {
     this.id = id
-    this.name = name
+    this.userName = name
     this.email = email
   }
 }

@@ -1,4 +1,4 @@
-import { bad, hit, type Result } from 'shared/core'
+import { left, right, type Either } from 'shared/core'
 import { ValueObject } from 'shared/domain'
 import { UserNameError } from './errors/value-objects-erros'
 
@@ -7,10 +7,10 @@ export class UserName extends ValueObject<{ name: string }> {
     super({ name })
   }
 
-  public static create (name: string): Result<UserNameError, UserName> {
+  static create (name: string): Either<UserNameError, UserName> {
     if (name.length < 5) {
-      return bad(new UserNameError(name))
+      return left(new UserNameError(name))
     }
-    return hit(new UserName(name))
+    return right(new UserName(name))
   }
 }

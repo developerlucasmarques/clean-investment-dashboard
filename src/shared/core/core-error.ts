@@ -1,6 +1,6 @@
 export abstract class CoreError {
-  public readonly message: string
-  public readonly name: string
+   readonly message: string
+   readonly name: string
 
   protected constructor (message: string) {
     const thisClass = Reflect.getPrototypeOf(this) as object

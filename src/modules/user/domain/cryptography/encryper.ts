@@ -1,5 +1,5 @@
 import { type AccessToken } from './access-token'
 
-export interface IEncrypter {
-  encrypt: (value: string) => AccessToken
+export abstract class IEncrypter {
+  abstract encrypt (value: string): AccessToken
 }

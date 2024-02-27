@@ -11,7 +11,6 @@ import { AuthService } from './auth.service'
       signOptions: { expiresIn: '60s' }
     })
   ],
-  providers: [AuthService],
-  exports: [AuthService]
+  providers: [AuthService]
 })
 export class AuthModule {}

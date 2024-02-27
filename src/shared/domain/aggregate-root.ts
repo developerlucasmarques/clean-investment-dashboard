@@ -5,7 +5,7 @@ import { type UniqueEntityID } from './unique-entity-id'
 export abstract class AggregateRoot<T extends { id: UniqueEntityID }> extends Entity<T> {
   private readonly _domainEvents: Array<DomainEvent<T>> = []
 
-  public get domainEvents (): Array<DomainEvent<T>> {
+   get domainEvents (): Array<DomainEvent<T>> {
     return this._domainEvents
   }
 

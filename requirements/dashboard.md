@@ -83,7 +83,7 @@ Exemplo:
 
 ### Respostas
 
-- Código de status: **400 Bad Request**
+- Código de status: **400 Left Request**
   - Se não encontrar o usuário pelo ID.
 - Código de status: **500 Internal Server Error**
   - Em caso de erro interno no servidor.

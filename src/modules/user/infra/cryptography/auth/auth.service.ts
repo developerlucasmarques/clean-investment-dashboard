@@ -5,10 +5,10 @@ import { type IEncrypter } from 'modules/user/domain/cryptography/encryper'
 
 @Injectable()
 export class AuthService implements IEncrypter {
-  public constructor (private readonly jwtService: JwtService) {}
+  constructor (private readonly jwtService: JwtService) {}
 
-  public encrypt (value: string): AccessToken {
-    const accessToken = this.jwtService.sign(value)
+  encrypt (value: string): AccessToken {
+    const accessToken = this.jwtService.sign({ payload: value })
 
     return { accessToken }
   }
