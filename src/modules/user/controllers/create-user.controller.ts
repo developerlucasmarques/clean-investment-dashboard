@@ -1,4 +1,5 @@
-import { BadRequestException, Body, Controller, Post } from '@nestjs/common'
+import { Body, Controller, Post } from '@nestjs/common'
+import { badRequest } from 'shared/helpers'
 import { CreateUserUseCase } from '../usecases/create-user.usecase'
 import { CreateUserDto } from './dtos/create-use.dto'
 
@@ -11,7 +12,7 @@ export class CreateUserController {
     const createUserResult = await this.createUser.execute(body)
 
     if (createUserResult.isLeft()) {
-      throw new BadRequestException(createUserResult.value)
+      badRequest(createUserResult.value)
     }
     return createUserResult.value
   }
