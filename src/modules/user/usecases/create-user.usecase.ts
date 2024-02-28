@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common'
-import { left, right } from 'shared/core'
+import { left, right } from '@/shared/core'
 import { User } from '../domain/entity/user'
 import { IAddUserRepository } from '../domain/repository/user-repository'
 import type { CreateUserInput, CreateUserOutput, ICreateUser } from '../domain/usecases/create-user'

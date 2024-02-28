@@ -1,7 +1,7 @@
 import { NonUniqueFieldNameException } from '@mikro-orm/core'
 import { Catch, HttpException, type ArgumentsHost, type ExceptionFilter } from '@nestjs/common'
 import type { Response } from 'express'
-import { serverError } from 'shared/helpers'
+import { serverError } from '@/shared/helpers'
 
 @Catch()
 export class HttpExceptionFilter implements ExceptionFilter {

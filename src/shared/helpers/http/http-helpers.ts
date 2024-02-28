@@ -1,5 +1,5 @@
 import { BadRequestException, type HttpException } from '@nestjs/common'
-import { type CoreError } from 'shared/core'
+import { type CoreError } from '@/shared/core'
 import { type HttpResponseError } from './http-types'
 
 export const badRequest = ({ name, message }: CoreError): HttpException => {

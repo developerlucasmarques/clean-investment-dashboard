@@ -1,7 +1,7 @@
 import { EntityManager } from '@mikro-orm/postgresql'
 import { Injectable } from '@nestjs/common'
-import { type User } from 'modules/user/domain/entity/user'
-import { type IUserRepository } from 'modules/user/domain/repository/user-repository'
+import { type User } from '@/modules/user/domain/entity/user'
+import { type IUserRepository } from '@/modules/user/domain/repository/user-repository'
 import { UserEntity } from './user-mikro-orm.entity'
 @Injectable()
 export class UserMikroOrmRepository implements IUserRepository {

@@ -9,7 +9,6 @@ module.exports = {
     '.+\\.ts$': 'ts-jest'
   },
   moduleNameMapper: {
-    'shared/(.*)': '<rootDir>/src/shared/$1',
-    'modules/(.*)': '<rootDir>/src/modules/$1'
+    '@/(.*)': '<rootDir>/src/$1'
   }
 }

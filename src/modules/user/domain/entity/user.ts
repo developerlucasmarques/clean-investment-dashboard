@@ -1,5 +1,5 @@
-import { AggregateRoot, UniqueEntityID } from 'shared/domain'
-import { left, right, type Either } from 'shared/core'
+import { AggregateRoot, UniqueEntityID } from '@/shared/domain'
+import { left, right, type Either } from '@/shared/core'
 import { UserCreatedDomainEvent } from './events'
 import type { CreateUserEntityErrors, DataCreateUser, UserProps } from './user-types'
 import { UserEmail, UserName } from './value-objects'
