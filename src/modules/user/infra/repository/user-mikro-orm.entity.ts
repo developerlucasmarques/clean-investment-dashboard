@@ -1,7 +1,7 @@
 import { Entity, PrimaryKey, Property } from '@mikro-orm/core'
 
 @Entity({ tableName: 'user' })
-export class UserEntity {
+export class UserEntityMO {
   @PrimaryKey()
     id: string
   @Property()
