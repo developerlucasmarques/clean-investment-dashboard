@@ -1,9 +1,9 @@
-import { BadRequestException } from '@nestjs/common'
+import { BadRequestException, type HttpException } from '@nestjs/common'
 import { type CoreError } from 'shared/core'
 import { type HttpResponseError } from './http-types'
 
-export const badRequest = ({ name, message }: CoreError): void => {
-  throw new BadRequestException({
+export const badRequest = ({ name, message }: CoreError): HttpException => {
+  return new BadRequestException({
     statusCode: 400,
     error: message,
     name

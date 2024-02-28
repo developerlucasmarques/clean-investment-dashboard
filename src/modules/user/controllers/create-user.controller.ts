@@ -11,7 +11,7 @@ export class CreateUserController {
     const createUserResult = await this.createUser.execute(body)
 
     if (createUserResult.isLeft()) {
-      badRequest(createUserResult.value)
+      throw badRequest(createUserResult.value)
     }
     return createUserResult.value
   }
