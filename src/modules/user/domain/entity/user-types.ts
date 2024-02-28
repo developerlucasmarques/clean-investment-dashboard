@@ -8,7 +8,7 @@ export type UserProps = {
   email: UserEmail
 }
 
-export type DataCreateUser = {
+export type CreateUserEntityInput = {
   id?: string
   name: string
   email: string

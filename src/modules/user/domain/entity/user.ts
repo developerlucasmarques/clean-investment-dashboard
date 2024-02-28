@@ -1,7 +1,7 @@
 import { AggregateRoot, UniqueEntityID } from '@/shared/domain'
 import { left, right, type Either } from '@/shared/core'
 import { UserCreatedDomainEvent } from './events'
-import type { CreateUserEntityErrors, DataCreateUser, UserProps } from './user-types'
+import type { CreateUserEntityErrors, CreateUserEntityInput, UserProps } from './user-types'
 import { UserEmail, UserName } from './value-objects'
 
 export class User extends AggregateRoot<UserProps> {
@@ -22,7 +22,7 @@ export class User extends AggregateRoot<UserProps> {
     return this.props.email
   }
 
-  static create (data: DataCreateUser): Either<CreateUserEntityErrors, User> {
+  static create (data: CreateUserEntityInput): Either<CreateUserEntityErrors, User> {
     const { email, name } = data
     const nameOrError = UserName.create(name)
     const emailOrError = UserEmail.create(email)

@@ -1,18 +1,20 @@
 import { Injectable } from '@nestjs/common'
 import { left, right } from '@/shared/core'
 import { User } from '../domain/entity/user'
-import { IAddUserRepository } from '../domain/repository/user-repository'
-import type { CreateUserInput, CreateUserOutput, ICreateUserUseCase } from '../domain/usecases/create-user'
-import { IEncrypter } from '../domain/cryptography/encryper'
+import { AbstAddUserRepository } from '../domain/repository/user-repository'
+import type {
+  CreateUserUseCaseInput, CreateUserUseCaseOutput, ICreateUserUseCase
+} from '../domain/usecases/create-user'
+import { AbstEncrypter } from '../domain/cryptography/encryper'
 
 @Injectable()
 export class CreateUserUseCase implements ICreateUserUseCase {
   constructor (
-    private readonly addUserRepository: IAddUserRepository,
-    private readonly encrypter: IEncrypter
+    private readonly addUserRepository: AbstAddUserRepository,
+    private readonly encrypter: AbstEncrypter
   ) {}
 
-  async execute (input: CreateUserInput): Promise<CreateUserOutput> {
+  async execute (input: CreateUserUseCaseInput): Promise<CreateUserUseCaseOutput> {
     const userOrError = User.create(input)
 
     if (userOrError.isLeft()) {

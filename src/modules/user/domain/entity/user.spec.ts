@@ -1,13 +1,13 @@
 import { UserCreatedDomainEvent } from './events'
 import { User } from './user'
-import { type DataCreateUser } from './user-types'
+import { type CreateUserEntityInput } from './user-types'
 import MockDate from 'mockdate'
 
 jest.mock('crypto', () => ({
   randomUUID: jest.fn().mockReturnValue('any_mock_id')
 }))
 
-const makeFakeDataCreateUser = (): DataCreateUser => ({
+const makeFakeCreateUserEntityInput = (): CreateUserEntityInput => ({
   email: 'any_email@mail.com',
   name: 'any_name'
 })
@@ -15,7 +15,7 @@ const makeFakeDataCreateUser = (): DataCreateUser => ({
 const makeSut = (id?: { id: string }): User => {
   return User.create({
     ...id && { ...id },
-    ...makeFakeDataCreateUser()
+    ...makeFakeCreateUserEntityInput()
   }).value as User
 }
 
