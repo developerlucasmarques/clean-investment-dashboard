@@ -1,3 +1,4 @@
+import { NonUniqueFieldNameException } from '@mikro-orm/core'
 import { Catch, HttpException, type ArgumentsHost, type ExceptionFilter } from '@nestjs/common'
 import type { Response } from 'express'
 import { serverError } from 'shared/helpers'
@@ -16,9 +17,16 @@ export class HttpExceptionFilter implements ExceptionFilter {
       bodyException = exception.getResponse()
     }
     if (statusCode === 500) {
-      const ex = exception as any
+      const error = new NonUniqueFieldNameException(exception)
 
-      console.log('EXCEPTIONNNNNNN', ex.code)
+      if (error.code === '23505') {
+        statusCode = 400
+        bodyException = {
+          statusCode: 400,
+          error: 'Unique data already exists',
+          name: 'UniqueConstraintViolated'
+        }
+      }
     }
     response.status(statusCode).json(bodyException)
   }
