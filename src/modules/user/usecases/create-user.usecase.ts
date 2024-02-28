@@ -2,11 +2,11 @@ import { Injectable } from '@nestjs/common'
 import { left, right } from '@/shared/core'
 import { User } from '../domain/entity/user'
 import { IAddUserRepository } from '../domain/repository/user-repository'
-import type { CreateUserInput, CreateUserOutput, ICreateUser } from '../domain/usecases/create-user'
+import type { CreateUserInput, CreateUserOutput, ICreateUserUseCase } from '../domain/usecases/create-user'
 import { IEncrypter } from '../domain/cryptography/encryper'
 
 @Injectable()
-export class CreateUserUseCase implements ICreateUser {
+export class CreateUserUseCase implements ICreateUserUseCase {
   constructor (
     private readonly addUserRepository: IAddUserRepository,
     private readonly encrypter: IEncrypter
