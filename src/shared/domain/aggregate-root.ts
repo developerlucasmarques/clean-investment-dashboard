@@ -16,11 +16,11 @@ export abstract class AggregateRoot<T extends { id: UniqueEntityID }> extends En
     })
   }
 
-  protected markEventsAsDispatched (domainEvent: DomainEvent<T>): void {
-    this._dispatchedEvents.add(domainEvent)
-  }
-
   protected addDomainEvent (domainEvent: DomainEvent<T>): void {
     this._domainEvents.add(domainEvent)
+  }
+
+  markEventsAsDispatched (domainEvent: DomainEvent<T>): void {
+    this._dispatchedEvents.add(domainEvent)
   }
 }

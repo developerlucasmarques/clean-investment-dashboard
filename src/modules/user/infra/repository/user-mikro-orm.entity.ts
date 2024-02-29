@@ -1,7 +1,10 @@
+import type { IDbEntity } from '@/shared/core'
+import { type AggregateRoot } from '@/shared/domain'
 import { Entity, PrimaryKey, Property } from '@mikro-orm/core'
+import { type User } from '../../domain/entity/user'
 
 @Entity({ tableName: 'user' })
-export class UserEntityMO {
+export class UserEntityMO implements IDbEntity {
   @PrimaryKey()
     id: string
   @Property()
@@ -10,14 +13,12 @@ export class UserEntityMO {
     unique: true
   })
     email: string
+  aggregate: AggregateRoot<any>
 
-  constructor (
-    id: string,
-    name: string,
-    email: string
-  ) {
-    this.id = id
-    this.name = name
-    this.email = email
+  constructor (user: User) {
+    this.id = user.id.value
+    this.name = user.name.value.name
+    this.email = user.email.value.email
+    this.aggregate = user
   }
 }

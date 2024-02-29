@@ -8,13 +8,8 @@ export class UserRepositoryMO implements IUserRepository {
   constructor (private readonly entityManager: EntityManager) {}
 
   async add (user: User): Promise<void> {
-    const userEntity = new UserEntityMO(
-      user.id.value,
-      user.name.value.name,
-      user.email.value.email
-    )
+    const userEntity = new UserEntityMO(user)
 
     this.entityManager.persist(userEntity)
-    await this.entityManager.flush()
   }
 }

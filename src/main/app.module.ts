@@ -3,6 +3,7 @@ import { PostgreSqlDriver } from '@mikro-orm/postgresql'
 import { Module } from '@nestjs/common'
 import { UserEntityMO } from '@/modules/user/infra/repository/user-mikro-orm.entity'
 import { UserModule } from '@/modules/user/user.module'
+import { ApplicationModule } from '@/shared/application'
 
 @Module({
   imports: [
@@ -14,7 +15,8 @@ import { UserModule } from '@/modules/user/user.module'
       password: 'admin',
       driver: PostgreSqlDriver
     }),
-    UserModule
+    UserModule,
+    ApplicationModule
   ]
 })
 export class AppModule {}

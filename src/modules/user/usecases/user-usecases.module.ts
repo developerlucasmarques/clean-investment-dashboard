@@ -6,6 +6,8 @@ import { JwtAdapterModule } from '../infra/cryptography/jwt/jwt-adapter.module'
 import { UserModuleMO } from '../infra/repository/user-mikro-orm.module'
 import { UserRepositoryMO } from '../infra/repository/user-mikro-orm.repository'
 import { CreateUserUseCase } from './create-user.usecase'
+import { Application } from '@/shared/core'
+import { ApplicationService } from '@/shared/application'
 
 @Module({
   imports: [JwtAdapterModule, UserModuleMO],
@@ -18,6 +20,10 @@ import { CreateUserUseCase } from './create-user.usecase'
     {
       provide: AbstEncrypter,
       useClass: JwtAdapter
+    },
+    {
+      provide: Application,
+      useClass: ApplicationService
     }
   ],
   exports: [CreateUserUseCase]
