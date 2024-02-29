@@ -8,8 +8,6 @@ import { JwtAdapterModule } from '../infra/cryptography/jwt/jwt-adapter.module'
 import { UserModuleMO } from '../infra/repository/user-mikro-orm.module'
 import { UserRepositoryMO } from '../infra/repository/user-mikro-orm.repository'
 import { CreateUserUseCase } from './create-user.usecase'
-import { DomainEventManager } from '@/shared/domain/events'
-import { DomainEventManagerEventEmmiter } from '@/main/application/event-manager'
 
 @Module({
   imports: [JwtAdapterModule, UserModuleMO],
@@ -26,10 +24,6 @@ import { DomainEventManagerEventEmmiter } from '@/main/application/event-manager
     {
       provide: Application,
       useClass: ApplicationService
-    },
-    {
-      provide: DomainEventManager,
-      useClass: DomainEventManagerEventEmmiter
     }
   ],
   exports: [CreateUserUseCase]
