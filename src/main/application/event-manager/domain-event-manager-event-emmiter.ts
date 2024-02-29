@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common'
 import EventEmitter2 from 'eventemitter2'
-import type { AggregateRoot } from '../domain'
-import { type IDomainEventManager } from '../domain/events'
+import type { AggregateRoot } from '../../../shared/domain'
+import type { DomainEventManager } from '@/shared/domain/events'
 
 @Injectable()
-export class DomainEventManagerEventEmmiter implements IDomainEventManager {
+export class DomainEventManagerEventEmmiter implements DomainEventManager {
   private readonly domainEventSubscriber: EventEmitter2
 
   constructor () {

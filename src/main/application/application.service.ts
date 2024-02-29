@@ -1,13 +1,13 @@
+import { DomainEventManager } from '@/shared/domain/events'
 import { EntityManager } from '@mikro-orm/postgresql'
 import { Injectable } from '@nestjs/common'
-import type { Application, IDbEntity } from '../core'
-import { DomainEventManagerEventEmmiter } from './domain-event-manager.application'
+import type { Application, IDbEntity } from '../../shared/core'
 
 @Injectable()
 export class ApplicationService implements Application {
   constructor (
     private readonly entityManager: EntityManager,
-    private readonly domainEventManager: DomainEventManagerEventEmmiter
+    private readonly domainEventManager: DomainEventManager
   ) {}
 
   async finish (): Promise<void> {
