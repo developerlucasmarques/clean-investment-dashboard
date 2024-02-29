@@ -1,7 +1,7 @@
 import type { EnvironmentContext, JestEnvironmentConfig } from '@jest/environment'
-import { execSync } from 'child_process'
 import NodeEnvironment from 'jest-environment-node'
 import { Client } from 'pg'
+import { createSchema } from '../../mikro-orm/create-schema'
 import env from '../env'
 
 const baseUrl = env.dbTestUrl
@@ -19,9 +19,9 @@ class CustomEnvironment extends NodeEnvironment {
   }
 
   async setup (): Promise<void> {
-    process.env.DATABASE_URL = this.connectionString
-    this.global.process.env.DATABASE_URL = this.connectionString
-    execSync('npm run create:schema')
+    process.env.DB_URL = this.connectionString
+    this.global.process.env.DB_URL = this.connectionString
+    await createSchema(this.connectionString as string)
   }
 
   async teardown (): Promise<void> {
