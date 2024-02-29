@@ -5,15 +5,12 @@ import { UserEntityMO } from '@/modules/user/infra/repository/user-mikro-orm.ent
 import { UserModule } from '@/modules/user/user.module'
 import { ApplicationModule } from '@/main/application'
 import { DomainEventManagerModule } from './application/event-manager/domain-event-manager-event-emmiter.module'
-
+import env from '@/main/configs/env'
 @Module({
   imports: [
     MikroOrmModule.forRoot({
       entities: [UserEntityMO],
-      dbName: 'nest',
-      host: 'localhost',
-      user: 'postgres',
-      password: 'admin',
+      clientUrl: env.dbUrl,
       driver: PostgreSqlDriver
     }),
     UserModule,

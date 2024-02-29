@@ -1,14 +1,12 @@
 import { MikroORM } from '@mikro-orm/core'
 import { UserEntityMO } from '../../modules/user/infra/repository/user-mikro-orm.entity'
-import { PostgreSqlDriver } from '@mikro-orm/postgresql';
+import { PostgreSqlDriver } from '@mikro-orm/postgresql'
+import env from '../configs/env'
 
 (async () => {
   const orm = await MikroORM.init({
     entities: [UserEntityMO],
-    dbName: 'nest',
-    host: 'localhost',
-    user: 'postgres',
-    password: 'admin',
+    clientUrl: env.dbUrl,
     driver: PostgreSqlDriver
   })
   const generator = orm.schema
