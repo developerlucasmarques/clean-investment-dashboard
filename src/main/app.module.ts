@@ -11,7 +11,8 @@ import env from '@/main/configs/env'
     MikroOrmModule.forRoot({
       entities: [UserEntityMO],
       clientUrl: env.dbUrl,
-      driver: PostgreSqlDriver
+      driver: PostgreSqlDriver,
+      allowGlobalContext: true
     }),
     UserModule,
     ApplicationModule,
