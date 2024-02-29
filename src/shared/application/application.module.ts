@@ -6,11 +6,11 @@ import { DomainEventManagerEventEmmiter } from './domain-event-manager.applicati
 @Module({
   providers: [
     ApplicationService,
-    DomainEventManagerEventEmmiter<any>
+    DomainEventManagerEventEmmiter
   ],
   exports: [
     ApplicationService,
-    DomainEventManagerEventEmmiter<any>
+    DomainEventManagerEventEmmiter
   ]
 })
 export class ApplicationModule {}

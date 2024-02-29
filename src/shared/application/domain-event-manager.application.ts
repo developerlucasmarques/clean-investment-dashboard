@@ -1,10 +1,10 @@
-import EventEmitter2 from 'eventemitter2'
-import type { AggregateRoot, UniqueEntityID } from '../domain'
-import { type IDomainEventManager } from '../domain/events'
 import { Injectable } from '@nestjs/common'
+import EventEmitter2 from 'eventemitter2'
+import type { AggregateRoot } from '../domain'
+import { type IDomainEventManager } from '../domain/events'
 
 @Injectable()
-export class DomainEventManagerEventEmmiter<T extends { id: UniqueEntityID }> implements IDomainEventManager<T> {
+export class DomainEventManagerEventEmmiter implements IDomainEventManager {
   private readonly domainEventSubscriber: EventEmitter2
 
   constructor () {
@@ -17,7 +17,7 @@ export class DomainEventManagerEventEmmiter<T extends { id: UniqueEntityID }> im
     this.domainEventSubscriber.on(eventName, handler)
   }
 
-  async publishDomainEvent (aggregateRoot: AggregateRoot<T>): Promise<void> {
+  async publishDomainEvent (aggregateRoot: AggregateRoot<any>): Promise<void> {
     console.log('aggregateRootttttttt', aggregateRoot)
     for (const event of aggregateRoot.uncommittedEvents) {
       aggregateRoot.markEventsAsDispatched(event)

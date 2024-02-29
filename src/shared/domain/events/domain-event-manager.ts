@@ -1,7 +1,6 @@
 import { type AggregateRoot } from '../aggregate-root'
-import { type UniqueEntityID } from '../unique-entity-id'
 
-export interface IDomainEventManager<T extends { id: UniqueEntityID }> {
+export interface IDomainEventManager {
   registerDomainEvent: (eventName: string, handler: () => any) => void
-  publishDomainEvent: (aggregateRoot: AggregateRoot<T>) => Promise<void>
+  publishDomainEvent: (aggregateRoot: AggregateRoot<any>) => Promise<void>
 }

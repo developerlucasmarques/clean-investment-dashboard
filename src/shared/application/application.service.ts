@@ -7,7 +7,7 @@ import { DomainEventManagerEventEmmiter } from './domain-event-manager.applicati
 export class ApplicationService implements Application {
   constructor (
     private readonly entityManager: EntityManager,
-    private readonly domainEventManager: DomainEventManagerEventEmmiter<any>
+    private readonly domainEventManager: DomainEventManagerEventEmmiter
   ) {}
 
   async finish (): Promise<void> {
