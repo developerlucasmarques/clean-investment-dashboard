@@ -1,10 +1,10 @@
 import { MikroORM } from '@mikro-orm/core'
 import { PostgreSqlDriver } from '@mikro-orm/postgresql'
-import { UserEntityMO } from '../../modules/user/infra/repository/user-mikro-orm.entity'
+import { UserDbEntity } from '../../modules/user/infra/repository/user-mikro-orm.db-entity'
 
 export const createSchema = async (clientUrl: string): Promise<void> => {
   const orm = await MikroORM.init({
-    entities: [UserEntityMO],
+    entities: [UserDbEntity],
     clientUrl,
     driver: PostgreSqlDriver,
     allowGlobalContext: true

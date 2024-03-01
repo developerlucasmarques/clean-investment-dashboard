@@ -1,21 +1,21 @@
 import { left, right, Application } from '@/shared/core'
 import { Injectable } from '@nestjs/common'
-import { AbstEncrypter } from '../domain/cryptography/encryper'
+import { Encrypter } from '../domain/cryptography/encryper'
 import { User } from '../domain/entity/user'
-import { AbstAddUserRepository } from '../domain/repository/user-repository'
+import { AddUserRepository } from '../domain/repository/user-repository'
 import type {
-  CreateUserUseCaseInput, CreateUserUseCaseOutput, ICreateUserUseCase
+  CreateUserInput, CreateUserOutput, CreateUser
 } from '../domain/usecases/create-user'
 
 @Injectable()
-export class CreateUserUseCase implements ICreateUserUseCase {
+export class CreateUserUseCase implements CreateUser {
   constructor (
-    private readonly addUserRepository: AbstAddUserRepository,
-    private readonly encrypter: AbstEncrypter,
+    private readonly addUserRepository: AddUserRepository,
+    private readonly encrypter: Encrypter,
     private readonly application: Application
   ) {}
 
-  async execute (input: CreateUserUseCaseInput): Promise<CreateUserUseCaseOutput> {
+  async execute (input: CreateUserInput): Promise<CreateUserOutput> {
     return await this.application.run(async () => {
       const userOrError = User.create(input)
 

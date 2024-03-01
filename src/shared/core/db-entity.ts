@@ -1,5 +1,5 @@
 import { type AggregateRoot } from '../domain/aggregate-root'
 
-export interface IDbEntity {
+export interface DbEntity {
   aggregate: AggregateRoot<any>
 }

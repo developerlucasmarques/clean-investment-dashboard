@@ -4,8 +4,8 @@ import { type UseCase } from '@/shared/core/usecase'
 import { type AccessToken } from '../cryptography/access-token'
 import { type EmailInUseError } from './errors/create-user-errors'
 
-export type CreateUserUseCaseInput = Omit<CreateUserEntityInput, 'id'>
+export type CreateUserInput = Omit<CreateUserEntityInput, 'id'>
 
-export type CreateUserUseCaseOutput = Either<CreateUserEntityErrors | EmailInUseError, AccessToken>
+export type CreateUserOutput = Either<CreateUserEntityErrors | EmailInUseError, AccessToken>
 
-export interface ICreateUserUseCase extends UseCase<CreateUserUseCaseInput, CreateUserUseCaseOutput> {}
+export interface CreateUser extends UseCase<CreateUserInput, CreateUserOutput> {}

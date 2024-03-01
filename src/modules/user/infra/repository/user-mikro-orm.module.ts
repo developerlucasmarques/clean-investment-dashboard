@@ -1,14 +1,14 @@
 import { Module } from '@nestjs/common'
-import { UserRepositoryMO } from './user-mikro-orm.repository'
-import { UserEntityMO } from './user-mikro-orm.entity'
+import { UserMikroOrmRepository } from './user-mikro-orm.repository'
+import { UserDbEntity } from './user-mikro-orm.db-entity'
 import { MikroOrmModule } from '@mikro-orm/nestjs'
 
 @Module({
   imports: [
     MikroOrmModule.forFeature([
-      UserEntityMO
+      UserDbEntity
     ])
   ],
-  providers: [UserRepositoryMO]
+  providers: [UserMikroOrmRepository]
 })
 export class UserModuleMO {}

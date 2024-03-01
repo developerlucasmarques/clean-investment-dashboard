@@ -1,7 +1,7 @@
 import { DomainEventManager } from '@/shared/domain/events'
 import { EntityManager } from '@mikro-orm/postgresql'
 import { Injectable } from '@nestjs/common'
-import type { Application, IDbEntity } from '../../shared/core'
+import type { Application, DbEntity } from '../../shared/core'
 
 @Injectable()
 export class ApplicationService implements Application {
@@ -13,8 +13,8 @@ export class ApplicationService implements Application {
   async finish (): Promise<void> {
     const unitOfWork = this.entityManager.getUnitOfWork()
     const entities = [
-      ...unitOfWork.getPersistStack() as unknown as IDbEntity[],
-      ...unitOfWork.getRemoveStack() as unknown as IDbEntity[]
+      ...unitOfWork.getPersistStack() as unknown as DbEntity[],
+      ...unitOfWork.getRemoveStack() as unknown as DbEntity[]
     ]
 
     for (const entity of entities) {
