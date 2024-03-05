@@ -1,3 +1,4 @@
+import { Application } from '@/shared/core'
 import { badRequest } from '@/shared/helpers'
 import { Body, Controller, Post } from '@nestjs/common'
 import { type AccessToken } from '../domain/cryptography/access-token'
@@ -6,15 +7,20 @@ import { CreateUserDto } from './dtos/create-use.dto'
 
 @Controller('/user')
 export class CreateUserController {
-  constructor (private readonly createUser: CreateUserUseCase) {}
+  constructor (
+    private readonly createUser: CreateUserUseCase,
+    private readonly application: Application
+  ) { }
 
   @Post('/')
   async perform (@Body() body: CreateUserDto): Promise<AccessToken> {
-    const createUserResult = await this.createUser.execute(body)
+    return await this.application.run(async () => {
+      const createUserResult = await this.createUser.execute(body)
 
-    if (createUserResult.isLeft()) {
-      throw badRequest(createUserResult.value)
-    }
-    return createUserResult.value
+      if (createUserResult.isLeft()) {
+        throw badRequest(createUserResult.value)
+      }
+      return createUserResult.value
+    })
   }
 }
