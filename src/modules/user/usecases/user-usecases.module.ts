@@ -1,5 +1,3 @@
-import { ApplicationService } from '@/main/application'
-import { Application } from '@/shared/core'
 import { Module } from '@nestjs/common'
 import { Encrypter } from '../domain/cryptography/encryper'
 import { AddUserRepository } from '../domain/repository/user-repository'
@@ -20,10 +18,6 @@ import { CreateUserUseCase } from './create-user.usecase'
     {
       provide: Encrypter,
       useClass: JwtAdapter
-    },
-    {
-      provide: Application,
-      useClass: ApplicationService
     }
   ],
   exports: [CreateUserUseCase]
