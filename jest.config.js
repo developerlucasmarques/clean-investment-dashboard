@@ -4,9 +4,23 @@ module.exports = {
   collectCoverageFrom: [
     '<rootDir>/src/**/*.ts'
   ],
+  coverageProvider:  "v8",
   testEnvironment: 'node',
   transform: {
-    '.+\\.ts$': 'ts-jest'
+    "^.+\\.ts?$":[ 
+      "@swc/jest",
+      {
+        "jsc": {
+          "parser": {
+            "syntax": "typescript",
+            "decorators": true
+          },
+          "transform": {
+            "decoratorMetadata": true
+          }
+        }
+      }
+    ],
   },
   moduleNameMapper: {
     '^@/(.*)': '<rootDir>/src/$1'
