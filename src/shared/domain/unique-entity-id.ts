@@ -5,7 +5,6 @@ import { ValueObject } from './value-object'
 export class UniqueEntityId extends ValueObject<string> {
   private constructor (id: string) {
     super(id)
-    Object.freeze(this)
   }
 
   static create (id?: string): Either<InvalidUuidError, UniqueEntityId> {
