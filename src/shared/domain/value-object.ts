@@ -1,12 +1,16 @@
+import { deepFreeze } from '../utils'
+
 type Props = Record<string, any> | string | number
 
 export abstract class ValueObject<T extends Props> {
-  protected constructor (private readonly props: T) {
-    Object.freeze(this)
+  private readonly _value: T
+
+  protected constructor (props: T) {
+    this._value = deepFreeze(props)
   }
 
   get value (): T {
-    return this.props
+    return this._value
   }
 
   toString = (): string => {
@@ -14,7 +18,7 @@ export abstract class ValueObject<T extends Props> {
       try {
         return this.value.toString()
       } catch (e) {
-        /* eslint-disable @typescript-eslint/restrict-plus-operands, @typescript-eslint/no-base-to-string */
+        /* eslint-disable */
         return this.value + ''
       }
     }

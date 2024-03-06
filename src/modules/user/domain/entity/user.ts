@@ -7,7 +7,6 @@ import { UserEmail, UserName } from './value-objects'
 export class User extends AggregateRoot<UserProps> {
   private constructor (props: UserProps) {
     super(props)
-    Object.freeze(this)
   }
 
   get id (): UniqueEntityId {
