@@ -33,9 +33,8 @@ export class User extends AggregateRoot<UserProps> {
       }
     }
 
-    const id = data.id ? new UniqueEntityID(data.id) : new UniqueEntityID()
     const user = new User({
-      id,
+      id: new UniqueEntityID(data.id),
       name: nameOrError.value as UserName,
       email: emailOrError.value as UserEmail
     })

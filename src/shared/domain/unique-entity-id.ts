@@ -8,6 +8,6 @@ export class UniqueEntityID {
   }
 
   get value (): string {
-    return this.id as string
+    return this.id as unknown as string
   }
 }

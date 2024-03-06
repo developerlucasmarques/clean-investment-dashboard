@@ -1,10 +1,10 @@
 import { left, right, type Either } from '@/shared/core'
 import { ValueObject } from '@/shared/domain'
-import { UserNameError } from './errors/value-objects-erros'
+import { UserNameError } from './errors/value-objects-errors'
 
-export class UserName extends ValueObject<{ name: string }> {
+export class UserName extends ValueObject<string> {
   private constructor (name: string) {
-    super({ name })
+    super(name)
   }
 
   static create (name: string): Either<UserNameError, UserName> {
