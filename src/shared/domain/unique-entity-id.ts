@@ -2,7 +2,7 @@ import { v4 as uuidV4, validate as validateUuid } from 'uuid'
 import { right, type Either, left } from '../core'
 import { InvalidUuidError } from './errors'
 import { ValueObject } from './value-object'
-export class UniqueEntityId extends ValueObject<string>{ 
+export class UniqueEntityId extends ValueObject<string> {
   private constructor (id: string) {
     super(id)
     Object.freeze(this)
