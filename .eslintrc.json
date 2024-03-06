@@ -26,7 +26,7 @@
     "@typescript-eslint/non-nullable-type-assertion-style": "off",
     "@typescript-eslint/no-invalid-void-type": "off",
     "@stylistic/ts/no-extra-parens": "error",
-    "@typescript-eslint/no-useless-constructor": "off",,
+    "@typescript-eslint/no-useless-constructor": "off",
     "@stylistic/ts/padding-line-between-statements": [
       "error",
       { "blankLine": "always", "prev": ["const", "let", "var"], "next": "*" },
