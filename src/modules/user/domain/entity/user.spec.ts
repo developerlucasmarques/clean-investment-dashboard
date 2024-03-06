@@ -3,8 +3,9 @@ import { User } from './user'
 import { type CreateUserEntityInput } from './user-types'
 import MockDate from 'mockdate'
 
-jest.mock('crypto', () => ({
-  randomUUID: jest.fn().mockReturnValue('any_mock_id')
+jest.mock('uuid', () => ({
+  v4: jest.fn().mockReturnValue('any_mock_id'),
+  validate: jest.fn().mockReturnValue(true)
 }))
 
 const makeFakeCreateUserEntityInput = (): CreateUserEntityInput => ({
@@ -48,7 +49,7 @@ describe('User Entity', () => {
     expect(domainEvents[0]).toBeInstanceOf(UserCreatedDomainEvent)
     expect(domainEvents[0].name).toBe('UserCreatedDomainEvent')
     expect(domainEvents[0].occurredOn).toEqual(new Date())
-    expect(domainEvents[0].payload.id).toEqual({ id: 'any_mock_id' })
+    expect(domainEvents[0].payload.id.value).toBe('any_mock_id')
   })
 
   it('Should not add to domainEvents a UserCreatedDomainEvent if already exists the same User', () => {

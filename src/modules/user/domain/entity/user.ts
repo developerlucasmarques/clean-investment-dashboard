@@ -1,4 +1,4 @@
-import { AggregateRoot, UniqueEntityID } from '@/shared/domain'
+import { AggregateRoot, UniqueEntityId } from '@/shared/domain'
 import { left, right, type Either } from '@/shared/core'
 import { UserCreatedDomainEvent } from './events'
 import type { CreateUserEntityErrors, CreateUserEntityInput, UserProps } from './user-types'
@@ -10,7 +10,7 @@ export class User extends AggregateRoot<UserProps> {
     Object.freeze(this)
   }
 
-  get id (): UniqueEntityID {
+  get id (): UniqueEntityId {
     return this.props.id
   }
 
@@ -26,15 +26,16 @@ export class User extends AggregateRoot<UserProps> {
     const { email, name } = data
     const nameOrError = UserName.create(name)
     const emailOrError = UserEmail.create(email)
+    const idOrError = UniqueEntityId.create(data.id)
 
-    for (const result of [nameOrError, emailOrError]) {
+    for (const result of [nameOrError, emailOrError, idOrError]) {
       if (result.isLeft()) {
         return left(result.value)
       }
     }
 
     const user = new User({
-      id: new UniqueEntityID(data.id),
+      id: idOrError.value as UniqueEntityId,
       name: nameOrError.value as UserName,
       email: emailOrError.value as UserEmail
     })

@@ -17,8 +17,8 @@ export class UserDbEntity implements DbEntity {
 
   constructor (user: User) {
     this.id = user.id.value
-    this.name = user.name.value.name
-    this.email = user.email.value.email
+    this.name = user.name.value
+    this.email = user.email.value
     this.aggregate = user
   }
 }

@@ -1,5 +1,5 @@
-import { type UniqueEntityID } from './unique-entity-id'
+import { type UniqueEntityId } from './unique-entity-id'
 
-export abstract class Entity<T extends { id: UniqueEntityID }> {
+export abstract class Entity<T extends { id: UniqueEntityId }> {
   protected constructor (protected readonly props: T) {}
 }

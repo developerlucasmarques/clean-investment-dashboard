@@ -1,9 +1,9 @@
-import type { UniqueEntityID } from '@/shared/domain'
+import type { UniqueEntityId } from '@/shared/domain'
 import type { UserEmail, UserName } from './value-objects'
 import type { UserEmailError, UserNameError } from './value-objects/errors/value-objects-errors'
 
 export type UserProps = {
-  id: UniqueEntityID
+  id: UniqueEntityId
   name: UserName
   email: UserEmail
 }

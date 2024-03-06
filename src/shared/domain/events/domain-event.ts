@@ -1,6 +1,6 @@
-import { type UniqueEntityID } from '../unique-entity-id'
+import { type UniqueEntityId } from '../unique-entity-id'
 
-export abstract class DomainEvent<T extends { id: UniqueEntityID }> {
+export abstract class DomainEvent<T extends { id: UniqueEntityId }> {
   readonly name: string
   readonly occurredOn: Date
   private readonly _payload: T
