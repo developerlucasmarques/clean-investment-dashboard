@@ -4,7 +4,7 @@ import { Module } from '@nestjs/common'
 import { UserDbEntity } from '@/modules/user/infra/repository/user-mikro-orm.db-entity'
 import { UserModule } from '@/modules/user/user.module'
 import { ApplicationModule } from '@/main/application'
-import { DomainEventManagerModule } from './application/event-manager/domain-event-manager-event-emmiter.module'
+import { DomainEventManagerModule } from './application/event-manager/domain-event-manager-event-emitter.module'
 import env from '@/main/configs/env'
 @Module({
   imports: [

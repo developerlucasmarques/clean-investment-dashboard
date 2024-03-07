@@ -1,1 +1,1 @@
-export * from './domain-event-manager-event-emmiter'
+export * from './domain-event-manager-event-emitter'

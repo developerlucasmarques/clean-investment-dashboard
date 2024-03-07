@@ -4,7 +4,7 @@ import type { AggregateRoot } from '../../../shared/domain'
 import type { DomainEventManager } from '@/shared/domain/events'
 
 @Injectable()
-export class DomainEventManagerEventEmmiter implements DomainEventManager {
+export class DomainEventManagerEventEmitter implements DomainEventManager {
   private readonly domainEventSubscriber: EventEmitter2
 
   constructor () {

@@ -1,13 +1,13 @@
 import { DomainEventManager } from '@/shared/domain/events'
 import { Global, Module } from '@nestjs/common'
-import { DomainEventManagerEventEmmiter } from './domain-event-manager-event-emmiter'
+import { DomainEventManagerEventEmitter } from './domain-event-manager-event-emitter'
 
 @Global()
 @Module({
   providers: [
     {
       provide: DomainEventManager,
-      useClass: DomainEventManagerEventEmmiter
+      useClass: DomainEventManagerEventEmitter
     }
   ],
   exports: [
