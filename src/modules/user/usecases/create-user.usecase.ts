@@ -1,6 +1,6 @@
 import { left, right } from '@/shared/core'
 import { Injectable } from '@nestjs/common'
-import { Encrypter } from '../domain/contracts/cryptography/encryper'
+import { Encryptor } from '../domain/contracts/cryptography/encryptor'
 import { User } from '../domain/entity/user'
 import { AddUserRepository } from '../domain/contracts/repository/user-repository'
 import type { CreateUser, CreateUserInput, CreateUserOutput } from '../domain/contracts/usecases/create-user'
@@ -9,7 +9,7 @@ import type { CreateUser, CreateUserInput, CreateUserOutput } from '../domain/co
 export class CreateUserUseCase implements CreateUser {
   constructor (
     private readonly addUserRepository: AddUserRepository,
-    private readonly encrypter: Encrypter
+    private readonly encryptor: Encryptor
   ) {}
 
   async execute (input: CreateUserInput): Promise<CreateUserOutput> {
@@ -21,8 +21,8 @@ export class CreateUserUseCase implements CreateUser {
     const user = userOrError.value
 
     await this.addUserRepository.add(user)
-    const accessToken = this.encrypter.encrypt(user.id)
+    const encrypted = this.encryptor.encrypt(user.id)
 
-    return right(accessToken)
+    return right({ accessToken: encrypted.value })
   }
 }

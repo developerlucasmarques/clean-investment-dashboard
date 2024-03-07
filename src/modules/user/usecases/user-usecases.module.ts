@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common'
-import { Encrypter } from '../domain/contracts/cryptography/encryper'
+import { Encryptor } from '../domain/contracts/cryptography/encryptor'
 import { AddUserRepository } from '../domain/contracts/repository/user-repository'
 import { JwtAdapter } from '../infra/cryptography/jwt/jwt-adapter'
 import { JwtAdapterModule } from '../infra/cryptography/jwt/jwt-adapter.module'
@@ -16,7 +16,7 @@ import { CreateUserUseCase } from './create-user.usecase'
       useClass: UserMikroOrmRepository
     },
     {
-      provide: Encrypter,
+      provide: Encryptor,
       useClass: JwtAdapter
     }
   ],
