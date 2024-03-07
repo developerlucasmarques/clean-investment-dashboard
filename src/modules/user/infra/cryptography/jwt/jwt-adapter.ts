@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
-import { type AccessToken } from '@/modules/user/domain/cryptography/access-token'
-import { type Encrypter } from '@/modules/user/domain/cryptography/encryper'
+import { type AccessToken } from '@/modules/user/domain/contracts/cryptography/access-token'
+import { type Encrypter } from '@/modules/user/domain/contracts/cryptography/encryper'
 
 @Injectable()
 export class JwtAdapter implements Encrypter {

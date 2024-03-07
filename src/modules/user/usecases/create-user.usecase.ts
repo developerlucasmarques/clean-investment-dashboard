@@ -1,9 +1,9 @@
 import { left, right } from '@/shared/core'
 import { Injectable } from '@nestjs/common'
-import { Encrypter } from '../domain/cryptography/encryper'
+import { Encrypter } from '../domain/contracts/cryptography/encryper'
 import { User } from '../domain/entity/user'
-import { AddUserRepository } from '../domain/repository/user-repository'
-import type { CreateUser, CreateUserInput, CreateUserOutput } from '../domain/usecases/create-user'
+import { AddUserRepository } from '../domain/contracts/repository/user-repository'
+import type { CreateUser, CreateUserInput, CreateUserOutput } from '../domain/contracts/usecases/create-user'
 
 @Injectable()
 export class CreateUserUseCase implements CreateUser {

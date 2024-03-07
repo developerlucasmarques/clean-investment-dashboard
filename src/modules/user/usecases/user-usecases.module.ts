@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common'
-import { Encrypter } from '../domain/cryptography/encryper'
-import { AddUserRepository } from '../domain/repository/user-repository'
+import { Encrypter } from '../domain/contracts/cryptography/encryper'
+import { AddUserRepository } from '../domain/contracts/repository/user-repository'
 import { JwtAdapter } from '../infra/cryptography/jwt/jwt-adapter'
 import { JwtAdapterModule } from '../infra/cryptography/jwt/jwt-adapter.module'
 import { UserModuleMO } from '../infra/repository/user-mikro-orm.module'
