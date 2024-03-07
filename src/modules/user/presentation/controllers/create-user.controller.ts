@@ -1,8 +1,8 @@
 import { Application } from '@/shared/core'
 import { badRequest } from '@/shared/helpers'
 import { Body, Controller, Post } from '@nestjs/common'
-import { type AccessToken } from '../domain/cryptography/access-token'
-import { CreateUserUseCase } from '../usecases/create-user.usecase'
+import { type AccessToken } from '@/modules/user/domain/cryptography/access-token'
+import { CreateUserUseCase } from '@/modules/user/usecases/create-user.usecase'
 import { CreateUserDto } from './dtos/create-use.dto'
 
 @Controller('/user')
