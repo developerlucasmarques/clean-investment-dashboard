@@ -1,4 +1,4 @@
-export type SortDirection = 'asc' | 'desc'
+import { type SortDirection } from './sort-direction'
 
 export type SearchProps<Filter = string> = Partial<{
   page: number
