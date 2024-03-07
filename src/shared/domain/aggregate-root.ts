@@ -1,8 +1,7 @@
 import { Entity } from './entity'
 import { type DomainEvent } from './events'
-import { type UniqueEntityId } from './unique-entity-id'
 
-export abstract class AggregateRoot<T extends { id: UniqueEntityId }> extends Entity<T> {
+export abstract class AggregateRoot<T> extends Entity<T> {
   private readonly _domainEvents: Set<DomainEvent<T>> = new Set<DomainEvent<T>>()
   private readonly _dispatchedEvents: Set<DomainEvent<T>> = new Set<DomainEvent<T>>()
 

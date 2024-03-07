@@ -1,16 +1,12 @@
-import { AggregateRoot, UniqueEntityId } from '@/shared/domain'
 import { left, right, type Either } from '@/shared/core'
+import { AggregateRoot, UniqueEntityId } from '@/shared/domain'
 import { UserCreatedDomainEvent } from './events'
 import type { CreateUserEntityErrors, CreateUserEntityInput, UserProps } from './user-types'
 import { UserEmail, UserName } from './value-objects'
 
 export class User extends AggregateRoot<UserProps> {
-  private constructor (props: UserProps) {
-    super(props)
-  }
-
-  get id (): UniqueEntityId {
-    return this.props.id
+  private constructor (props: UserProps, id?: UniqueEntityId) {
+    super(props, id)
   }
 
   get name (): UserName {
@@ -34,10 +30,10 @@ export class User extends AggregateRoot<UserProps> {
     }
 
     const user = new User({
-      id: idOrError.value as UniqueEntityId,
       name: nameOrError.value as UserName,
       email: emailOrError.value as UserEmail
-    })
+    },
+    idOrError.value as UniqueEntityId)
 
     const isNewUser = !data.id
 

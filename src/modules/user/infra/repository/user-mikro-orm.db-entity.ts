@@ -16,7 +16,7 @@ export class UserDbEntity implements DbEntity {
   aggregate: AggregateRoot<any>
 
   constructor (user: User) {
-    this.id = user.id.value
+    this.id = user.id
     this.name = user.name.value
     this.email = user.email.value
     this.aggregate = user

@@ -21,7 +21,7 @@ export class CreateUserUseCase implements CreateUser {
     const user = userOrError.value
 
     await this.addUserRepository.add(user)
-    const accessToken = this.encrypter.encrypt(user.id.value)
+    const accessToken = this.encrypter.encrypt(user.id)
 
     return right(accessToken)
   }

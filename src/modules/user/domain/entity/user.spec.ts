@@ -28,7 +28,7 @@ describe('User Entity', () => {
   it('Should return an User on success', () => {
     const sut = makeSut()
 
-    expect(sut.id.value).toBe('any_mock_id')
+    expect(sut.id).toBe('any_mock_id')
     expect(sut.email.value).toEqual('any_email@mail.com')
     expect(sut.name.value).toEqual('any_name')
   })
@@ -36,7 +36,7 @@ describe('User Entity', () => {
   it('Should return an User with the same id informed', () => {
     const sut = makeSut({ id: 'another_id' })
 
-    expect(sut.id.value).toBe('another_id')
+    expect(sut.id).toBe('another_id')
     expect(sut.email.value).toEqual('any_email@mail.com')
     expect(sut.name.value).toEqual('any_name')
   })
@@ -49,7 +49,6 @@ describe('User Entity', () => {
     expect(domainEvents[0]).toBeInstanceOf(UserCreatedDomainEvent)
     expect(domainEvents[0].name).toBe('UserCreatedDomainEvent')
     expect(domainEvents[0].occurredOn).toEqual(new Date())
-    expect(domainEvents[0].payload.id.value).toBe('any_mock_id')
   })
 
   it('Should not add to domainEvents a UserCreatedDomainEvent if already exists the same User', () => {
