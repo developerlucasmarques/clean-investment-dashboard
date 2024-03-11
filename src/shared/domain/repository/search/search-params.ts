@@ -15,7 +15,7 @@ export class SearchParams<Filter = string> {
   readonly sortDir: SortDirection | null
   readonly filter: Filter | string | null
 
-  constructor (props: SearchProps = {}) {
+  constructor (props: SearchProps<Filter> = {}) {
     this.page = props.page ?? 1
     this.recordsPerPage = props.recordsPerPage ?? 10
     this.sort = props.sort ?? null
