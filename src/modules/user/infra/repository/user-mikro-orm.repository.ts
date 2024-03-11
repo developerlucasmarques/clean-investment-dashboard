@@ -4,7 +4,7 @@ import { EntityManager } from '@mikro-orm/postgresql'
 import { Injectable } from '@nestjs/common'
 import { UserDbEntity } from './user-mikro-orm.db-entity'
 @Injectable()
-export class UserMikroOrmRepository implements UserRepository {
+export class UserMikroOrmRepository implements UserRepository.Repository {
   constructor (private readonly entityManager: EntityManager) {}
 
   async add (user: User): Promise<void> {
