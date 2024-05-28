@@ -18,10 +18,8 @@ export class DomainEventManagerEventEmitter implements DomainEventManager {
   }
 
   async publishDomainEvent (aggregateRoot: AggregateRoot<any>): Promise<void> {
-    console.log('aggregateRootttttttt', aggregateRoot)
     for (const event of aggregateRoot.uncommittedEvents) {
       aggregateRoot.markEventsAsDispatched(event)
-      console.log('EVENT 222', event)
       await this.domainEventSubscriber.emitAsync(event.name, event)
     }
   }

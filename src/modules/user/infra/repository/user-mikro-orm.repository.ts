@@ -3,6 +3,7 @@ import { type User } from '@/modules/user/domain/entity/user'
 import { EntityManager } from '@mikro-orm/postgresql'
 import { Injectable } from '@nestjs/common'
 import { UserDbEntity } from './user-mikro-orm.db-entity'
+
 @Injectable()
 export class UserMikroOrmRepository implements UserRepository.Repository {
   constructor (private readonly entityManager: EntityManager) {}

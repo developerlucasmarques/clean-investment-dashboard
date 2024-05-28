@@ -43,3 +43,5 @@ export class User extends AggregateRoot<UserProps> {
     return right(user)
   }
 }
+
+Controller => (Apllication - UseCases, SendEmail) => 
